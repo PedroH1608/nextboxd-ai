@@ -1,10 +1,30 @@
 import { useState } from "react";
 
+function formatRuntime(minutes: number): string {
+  if (!minutes) return "Runtime not available";
+  
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+  
+  if (hours === 0) return `${remainingMinutes}m`;
+  if (remainingMinutes === 0) return `${hours}h`;
+  return `${hours}h ${remainingMinutes}m`;
+}
+
 interface MovieSuggestion {
+  image: string;
   title: string;
   tagline: string;
   year: string;
+  certification: string;
+  genre: string;
+  runtime: number;
+  rating: number;
+  trailer: string;
   overview: string;
+  directors: string;
+  writers: string;
+  sound: string;
 }
 
 export default function LandingPage() {
@@ -82,31 +102,32 @@ export default function LandingPage() {
       {movieSuggestion && (
         <article>
           <div>
-            <img src="./" alt="Movie Image" />
+            <img src={`https://image.tmdb.org/t/p/w500${movieSuggestion.image}`} alt={`Poster for ${movieSuggestion.title}`} />
           </div>
           <div>
             <div>
               <div>
                 <h2>{movieSuggestion.title}</h2>
-                <p>tagline</p>
+                <p>{movieSuggestion.tagline}</p>
                 <span>{movieSuggestion.year}</span>
               </div>
               <div>
-                <span>Age</span>
-                <span>Genre</span>
-                <span>Runtime</span>
+                <span>{movieSuggestion.certification}</span>
+                <p>{movieSuggestion.genre}</p>
+                <span>{formatRuntime(movieSuggestion.runtime)}</span>
               </div>
             </div>
             <div>
-              <span>metacritic rating</span>
-              <span>Trailer</span>
+              <span>{movieSuggestion.rating}</span>
+              <span>{movieSuggestion.trailer}</span>
             </div>
             <div>
               <span>{movieSuggestion.overview}</span>
             </div>
             <div>
-              <span>Director</span>
-              <span>Writer</span>
+              <span>{movieSuggestion.directors}</span>
+              <span>{movieSuggestion.writers}</span>
+              <span>{movieSuggestion.sound}</span>
             </div>
           </div>
         </article>
