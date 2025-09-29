@@ -50,9 +50,14 @@ export async function getMovieSuggestionFromLLM(prompt, csvFile) {
 
   console.log("Raw LLM Response:", llmResponse.data.choices[0].message.content);
 
-  const cleanedResponse = llmResponse.data.choices[0].message.content
-  const movieChoice = JSON.parse(cleanedResponse);
-
-  console.log(`AI decided on: ${movieChoice.title} (${movieChoice.year})`);
-  return movieChoice;
+  const cleanedResponse = llmResponse.data.choices[0].message.content;
+  try {
+    const movieChoice = JSON.parse(cleanedResponse);
+    console.log(`AI decided on: ${movieChoice.title} (${movieChoice.year})`);
+    return movieChoice;
+  } catch (error) {
+    console.error("Failed to parse LLM response as JSON:", cleanedResponse);
+    // Lança um erro que pode ser capturado pelo errorHandler
+    throw new Error("The AI returned an invalid response format.");
+  }
 }

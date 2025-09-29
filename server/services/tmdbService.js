@@ -1,4 +1,36 @@
-import tmdbApi from "./api.js";
+import axios from "axios";
+
+const tmdbApi = axios.create({
+  baseURL: "https://api.themoviedb.org/3",
+  params: {
+    api_key: process.env.TMDB_API_KEY,
+    language: "en-US",
+    include_adult: false,
+  },
+});
+
+export async function findMovieId(movieChoice) {
+  const searchParams = {
+    query: movieChoice.title,
+    year: movieChoice.year,
+  };
+
+  const response = await tmdbApi.get("/search/movie", {
+    params: searchParams,
+  });
+
+  if (response.data.results.length === 0) {
+    throw new Error(
+      `No movie found for title "${movieChoice.title}" ${movieChoice.year}".`
+    );
+  }
+
+  const foundMovie = response.data.results[0];
+
+  return {
+    id: foundMovie.id,
+  };
+}
 
 export async function getMovieDetails(movieId) {
   const response = await tmdbApi.get(`/movie/${movieId}`);
@@ -15,8 +47,28 @@ export async function getMovieDetails(movieId) {
   };
 }
 
-export async function getMovieYear(movieId) {
+export async function getMovieRelease(movieId) {
   const response = await tmdbApi.get(`/movie/${movieId}/release_dates`);
+  const results = response.data.results;
+
+  const usReleaseInfo = results.find((r) => r.iso_3166_1 === "US");
+
+  if (!usReleaseInfo) {
+    return { certification: null, release_date: null };
+  }
+
+  const theatricalRelease = usReleaseInfo.release_dates.find(
+    (rd) => rd.type === 3
+  );
+
+  if (!theatricalRelease) {
+    return { certification: null, release_date: null };
+  }
+
+  return {
+    certification: theatricalRelease.certification,
+    release_date: theatricalRelease.release_date,
+  };
 }
 
 export async function getMovieTrailer(movieId) {
