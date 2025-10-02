@@ -1,6 +1,6 @@
 export default function PageFooter() {
   return (
-    <footer className="text-center my-8 text-xs text-text-muted">
+    <footer className="text-center my-8 text-xs text-text-muted mx-3">
       <p>
         This service uses TMDB and the TMDB APIs but is not endorsed, certified,
         or otherwise approved by TMDB.

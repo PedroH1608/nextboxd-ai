@@ -1,4 +1,4 @@
-# NextWatch AI
+# WIP - NextWatch AI
 
 NextWatch AI is an intelligent movie suggestion application that helps you discover your next favorite film. By leveraging the power of AI, it provides personalized recommendations based on your prompts or even your own list of movies.
 

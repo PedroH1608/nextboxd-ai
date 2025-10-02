@@ -9,7 +9,9 @@ export interface MovieSuggestion {
   rating: number;
   trailer: string;
   overview: string;
+  cast: { name: string; character: string }[];
   directors: string;
+  producers: string;
   writers: string;
   sound: string;
 }

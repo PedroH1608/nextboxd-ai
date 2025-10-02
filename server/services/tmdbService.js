@@ -90,28 +90,31 @@ export async function getMovieCredits(movieId) {
   const cast = response.data.cast;
   const crew = response.data.crew;
 
-  const topCast = cast.slice(0, 5).map((member) => ({
+  const topCast = cast.slice(0, 3).map((member) => ({
     name: member.name,
     character: member.character,
   }));
 
-  const directors = crew
+  const mainDirectors = crew
     .filter((member) => member.department === "Directing")
+    .slice(0, 3)
     .map((member) => member.name);
-  const producers = crew
+  const mainProducers = crew
     .filter((member) => member.department === "Production")
+    .slice(0, 3)
     .map((member) => member.name);
-  const writers = crew
+  const mainWriters = crew
     .filter((member) => member.department === "Writing")
+    .slice(0, 3)
     .map((member) => member.name);
 
   const soundLead = crew.find((member) => member.department === "Sound");
 
   return {
     cast: topCast,
-    directors,
-    producers,
-    writers,
+    directors: mainDirectors,
+    producers: mainProducers,
+    writers: mainWriters,
     sound: soundLead ? soundLead.name : null,
   };
 }

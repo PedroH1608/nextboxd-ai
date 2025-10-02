@@ -22,7 +22,9 @@ async function getFullMovieDetails(movieId) {
       : null,
     certification: releaseInfo.certification,
     trailer: trailerInfo.trailer,
+    cast: creditsInfo.cast,
     directors: creditsInfo.directors.join(", "),
+    producers: creditsInfo.producers.join(", "),
     writers: creditsInfo.writers.join(", "),
     sound: creditsInfo.sound,
   };
