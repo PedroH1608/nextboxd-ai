@@ -1,5 +1,3 @@
-import Icon from "../atoms/Icon";
-
 function formatRuntime(minutes: number): string {
   if (!minutes) return "Runtime not available";
 
@@ -25,12 +23,20 @@ export default function MovieInfoBar({
   return (
     <div className="flex justify-evenly border-y-2 border-border-primary my-4 py-4">
       <div className="flex flex-col items-center justify-center">
-        <Icon name="rating" />
+        <img
+          src="./images/icons/rating.svg"
+          alt="Rating Icon"
+          className="w-10"
+        />
         <span className="text-text-secondary font-semibold">RATING</span>
         <span>{rating.toFixed(1)}</span>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <Icon name="runtime" />
+        <img
+          src="./images/icons/runtime.svg"
+          alt="Runtime Icon"
+          className="w-10"
+        />
         <span className="text-text-secondary font-semibold">RUNTIME</span>
         <span>{formatRuntime(runtime)}</span>
       </div>
@@ -40,9 +46,10 @@ export default function MovieInfoBar({
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Icon
-          name="trailer"
-          className="group-hover:bg-accent-light transition-colors"
+        <img
+          src="./images/icons/trailer.svg"
+          alt="Trailer Icon"
+          className="group-hover:bg-accent-light transition-colors w-10"
         />
         <span className="text-text-secondary font-semibold group-hover:text-text-primary transition-colors">
           TRAILER

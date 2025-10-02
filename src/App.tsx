@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import { useMovieSuggestion } from "./hooks/useMovieSuggestion";
 import PageHeader from "./components/organisms/PageHeader";
 import SearchForm from "./components/molecules/SearchForm";
@@ -9,17 +10,22 @@ function App() {
     useMovieSuggestion();
 
   return (
-    <main className="bg-background min-h-screen flex flex-col">
-      <PageHeader />
-      <section className="bg-card-background p-6 rounded-xl shadow-lg m-4">
-        <SearchForm onSubmit={handleSearchSubmit} isLoading={isLoading} />
-        {error && <p className="mt-4 text-center text-error">{error}</p>}
-      </section>
+    <>
+      <main className="bg-background min-h-screen flex flex-col">
+        <PageHeader />
+        <section className="bg-card-background p-6 rounded-xl shadow-lg m-4">
+          <SearchForm onSubmit={handleSearchSubmit} isLoading={isLoading} />
+          {error && <p className="mt-4 text-center text-error">{error}</p>}
+        </section>
 
-      {movieSuggestion && <MovieSuggestionCard suggestion={movieSuggestion} />}
+        {movieSuggestion && (
+          <MovieSuggestionCard suggestion={movieSuggestion} />
+        )}
 
-      <PageFooter />
-    </main>
+        <PageFooter />
+      </main>
+      <Analytics />
+    </>
   );
 }
 
