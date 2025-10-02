@@ -1,4 +1,4 @@
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { useMovieSuggestion } from "./hooks/useMovieSuggestion";
 import PageHeader from "./components/organisms/PageHeader";
 import SearchForm from "./components/molecules/SearchForm";
