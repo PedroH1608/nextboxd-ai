@@ -26,7 +26,7 @@ export default function MovieInfoBar({
         <img
           src="./images/icons/rating.svg"
           alt="Rating Icon"
-          className="w-10"
+          className="w-9"
         />
         <span className="text-text-secondary font-semibold">RATING</span>
         <span>{rating.toFixed(1)}</span>
@@ -35,7 +35,7 @@ export default function MovieInfoBar({
         <img
           src="./images/icons/runtime.svg"
           alt="Runtime Icon"
-          className="w-10"
+          className="w-9"
         />
         <span className="text-text-secondary font-semibold">RUNTIME</span>
         <span>{formatRuntime(runtime)}</span>
@@ -49,7 +49,7 @@ export default function MovieInfoBar({
         <img
           src="./images/icons/trailer.svg"
           alt="Trailer Icon"
-          className="group-hover:bg-accent-light transition-colors w-10"
+          className="transition-colors w-9"
         />
         <span className="text-text-secondary font-semibold group-hover:text-text-primary transition-colors">
           TRAILER

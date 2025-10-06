@@ -12,7 +12,7 @@ export default function MovieSuggestionCard({
   suggestion,
 }: MovieSuggestionCardProps) {
   return (
-    <article className="mx-5 my-4 bg-card-background rounded-xl shadow-lg animate-fade-in overflow-hidden">
+    <article className="m-4 bg-card-background rounded-xl shadow-lg animate-fade-in overflow-hidden max-[420px]:mx-2">
       <div>
         <img
           src={`https://image.tmdb.org/t/p/w500${suggestion.image}`}

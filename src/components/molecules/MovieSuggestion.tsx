@@ -15,9 +15,9 @@ export default function MovieHeader({
 }: MovieHeaderProps) {
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <h2 className="text-3xl font-bold mr-2">{title}</h2>
+      <div className="flex justify-between items-center gap-4">
+        <div className="flex items-center gap-2">
+          <h2 className="text-3xl font-bold">{title}</h2>
           <span className="text-2xl font-light text-text-secondary">
             ({year})
           </span>
@@ -25,7 +25,7 @@ export default function MovieHeader({
         <img
           src={`/images/us-certifications/${certification}.svg`}
           alt={`${certification}`}
-          className="w-1/6 object-contain"
+          className="object-contain max-h-9"
         />
       </div>
       <p className="text-lg text-text-secondary italic">{tagline}</p>
