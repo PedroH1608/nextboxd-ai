@@ -15,7 +15,7 @@ export default function MovieSuggestionCard({
     <article className="m-4 bg-card-background rounded-xl shadow-lg animate-fade-in overflow-hidden max-[420px]:mx-2">
       <div>
         <img
-          src={`https://image.tmdb.org/t/p/w500${suggestion.image}`}
+          src={`https://image.tmdb.org/t/p/original${suggestion.image}`}
           alt={`Poster for ${suggestion.title}`}
           className="object-cover w-full h-full"
         />

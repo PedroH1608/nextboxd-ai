@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLanguage } from "../../context/LanguageContext";
 import Button from "../atoms/Button";
 
 interface SearchFormProps {
@@ -14,6 +15,7 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,20 +54,20 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
   const isTooltipVisible = isTooltipPinned || (isHovering && isLargeScreen);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input
         type="text"
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
-        placeholder="A sci-fi movie in a galaxy far, far away..."
+        placeholder={t.searchPlaceholder}
         className="w-full p-3 bg-input-background rounded-lg border-2 border-transparent focus:border-accent focus:outline-none transition-colors"
       />
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between gap-5">
         <label
           htmlFor="csv-upload"
-          className="cursor-pointer p-3 bg-input-background rounded-lg hover:bg-light-input-background transition-colors w-2/3 text-center"
+          className="cursor-pointer p-3 bg-input-background rounded-lg hover:bg-light-input-background transition-colors w-full text-center"
         >
-          {csvFile ? "CSV file uploaded" : "Upload a CSV file (optional)"}
+          {csvFile ? t.watchlistUploaded : t.uploadWatchlist}
         </label>
         <input
           id="csv-upload"
@@ -92,26 +94,14 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
               isTooltipVisible ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
-            <p>
-              A CSV file is a plain text file that stores tabular data, such as
-              a spreadsheet or database information.
-            </p>
-            <p>
-              You can export your movie list as a CSV file from sites like IMDb
-              or Letterboxd.
-            </p>
-            <p>
-              To upload your Letterboxd CSV file on mobile devices, you must
-              first export it from your account. To do this, go to "Settings" -
-              "Advanced" - "Export Your Data" and then upload the watchlist.csv
-              file.
-            </p>
+            <p>{t.tooltipWatchlistInfo}</p>
+            <p>{t.tooltipLetterboxdInfo}</p>
           </div>
         </div>
-        <Button type="submit" isLoading={isLoading}>
-          Search
-        </Button>
       </div>
+      <Button type="submit" isLoading={isLoading}>
+        {t.searchButton}
+      </Button>
     </form>
   );
 }
