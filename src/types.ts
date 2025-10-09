@@ -4,6 +4,7 @@ export interface MovieSuggestion {
   tagline: string;
   year: string;
   certification: string;
+  country: string | null;
   genre: string;
   runtime: number;
   rating: number;

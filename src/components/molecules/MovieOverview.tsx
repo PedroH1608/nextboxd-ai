@@ -1,8 +1,7 @@
 import { useLanguage } from "../../context/LanguageContext";
+import type { MovieSuggestion } from "../../types";
 
-interface MovieOverviewProps {
-  overview: string;
-}
+type MovieOverviewProps = Pick<MovieSuggestion, "overview">;
 
 export default function MovieOverview({ overview }: MovieOverviewProps) {
   const { t } = useLanguage();

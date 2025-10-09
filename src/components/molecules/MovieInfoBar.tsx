@@ -1,4 +1,5 @@
 import { useLanguage } from "../../context/LanguageContext";
+import type { MovieSuggestion } from "../../types";
 
 function formatRuntime(minutes: number): string {
   if (!minutes) return "Runtime not available";
@@ -11,11 +12,10 @@ function formatRuntime(minutes: number): string {
   return `${hours}h ${remainingMinutes}m`;
 }
 
-interface MovieInfoBarProps {
-  rating: number;
-  runtime: number;
-  trailer: string;
-}
+type MovieInfoBarProps = Pick<
+  MovieSuggestion,
+  "rating" | "runtime" | "trailer"
+>;
 
 export default function MovieInfoBar({
   rating,
@@ -57,7 +57,9 @@ export default function MovieInfoBar({
         <span className="text-text-secondary font-semibold group-hover:text-text-primary transition-colors">
           {t.trailer}
         </span>
-        <span className=" group-hover:underline transition-colors">{t.watch}</span>
+        <span className=" group-hover:underline transition-colors">
+          {t.watch}
+        </span>
       </a>
     </div>
   );

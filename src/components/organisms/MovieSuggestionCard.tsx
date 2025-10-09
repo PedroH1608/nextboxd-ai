@@ -27,6 +27,7 @@ export default function MovieSuggestionCard({
           tagline={suggestion.tagline}
           genre={suggestion.genre}
           certification={suggestion.certification}
+          country={suggestion.country}
         />
         <MovieInfoBar
           rating={suggestion.rating}

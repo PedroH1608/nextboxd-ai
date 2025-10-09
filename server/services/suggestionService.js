@@ -1,5 +1,6 @@
 import { getMovieSuggestionFromLLM } from "./openrouterService.js";
 import {
+  getMoviePoster,
   getMovieDetails,
   getMovieRelease,
   getMovieTrailer,
@@ -7,16 +8,19 @@ import {
   findMovieId,
 } from "./tmdbService.js";
 
-async function getFullMovieDetails(movieId) {
-  const [details, releaseInfo, trailerInfo, creditsInfo] = await Promise.all([
-    getMovieDetails(movieId),
-    getMovieRelease(movieId),
-    getMovieTrailer(movieId),
-    getMovieCredits(movieId),
-  ]);
+async function getFullMovieDetails(movieId, locale) {
+  const [posterInfo, details, releaseInfo, trailerInfo, creditsInfo] =
+    await Promise.all([
+      getMoviePoster(movieId, locale),
+      getMovieDetails(movieId, locale),
+      getMovieRelease(movieId, locale),
+      getMovieTrailer(movieId),
+      getMovieCredits(movieId),
+    ]);
 
   return {
     ...details,
+    image: posterInfo.image,
     year: releaseInfo.release_date
       ? new Date(releaseInfo.release_date).getFullYear().toString()
       : null,
@@ -30,9 +34,9 @@ async function getFullMovieDetails(movieId) {
   };
 }
 
-export async function generateMovieSuggestion(prompt, csvFile) {
-  const movieChoice = await getMovieSuggestionFromLLM(prompt, csvFile);
+export async function generateMovieSuggestion(prompt, csvFile, locale) {
+  const movieChoice = await getMovieSuggestionFromLLM(prompt, csvFile, locale);
   const foundMovie = await findMovieId(movieChoice);
-  const suggestion = await getFullMovieDetails(foundMovie.id);
+  const suggestion = await getFullMovieDetails(foundMovie.id, locale);
   return suggestion;
 }
