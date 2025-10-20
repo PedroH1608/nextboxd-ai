@@ -30,7 +30,7 @@ export default function LanguageSelector() {
     <div className="relative" ref={wrapperRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 bg-input-background rounded-2xl hover:bg-light-input-background transition-colors flex items-center gap-1"
+        className="p-2 bg-input rounded-2xl hover:bg-input-hover transition-colors flex items-center gap-1"
       >
         <img
           src={
@@ -48,16 +48,16 @@ export default function LanguageSelector() {
         />
       </button>
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-15 bg-card-background rounded-2xl shadow-lg z-10 border border-border-primary">
+        <div className="absolute top-full right-0 mt-2 w-15 bg-card rounded-2xl shadow-lg z-10 border border-border">
           <button
             onClick={() => handleLanguageChange("en-US")}
-            className="block w-full text-left px-4 py-2 hover:bg-light-input-background rounded-t-lg"
+            className="block w-full text-left px-4 py-2 hover:bg-input-hover rounded-t-lg"
           >
             <img src="/images/icons/us.png" alt="US Flag" />
           </button>
           <button
             onClick={() => handleLanguageChange("pt-BR")}
-            className="block w-full text-left px-4 py-2 hover:bg-light-input-background rounded-b-lg"
+            className="block w-full text-left px-4 py-2 hover:bg-input-hover rounded-b-lg"
           >
             <img src="/images/icons/br.png" alt="Brazil Flag" />
           </button>

@@ -12,15 +12,15 @@ export default function MovieSuggestionCard({
   suggestion,
 }: MovieSuggestionCardProps) {
   return (
-    <article className="m-4 bg-card-background rounded-xl shadow-lg animate-fade-in overflow-hidden max-[420px]:mx-2">
-      <div>
+    <article className="m-4 bg-card rounded-xl shadow-lg animate-fade-in overflow-hidden md:flex md:m-8">
+      <div className="2xl:max-w-90">
         <img
           src={`https://image.tmdb.org/t/p/original${suggestion.image}`}
           alt={`Poster for ${suggestion.title}`}
           className="object-cover w-full h-full"
         />
       </div>
-      <div className="p-6">
+      <div className="p-6 flex flex-col justify-between 2xl:w-full">
         <MovieHeader
           title={suggestion.title}
           year={suggestion.year}

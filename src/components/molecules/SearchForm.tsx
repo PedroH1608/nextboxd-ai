@@ -60,48 +60,52 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
         value={prompt}
         onChange={(e) => setPrompt(e.target.value)}
         placeholder={t.searchPlaceholder}
-        className="w-full p-3 bg-input-background rounded-lg border-2 border-transparent focus:border-accent focus:outline-none transition-colors"
+        className="w-full p-3 bg-input rounded-lg border-2 border-transparent focus:border-accent focus:outline-none transition-colors"
       />
-      <div className="flex items-center justify-between gap-5">
-        <label
-          htmlFor="csv-upload"
-          className="cursor-pointer p-3 bg-input-background rounded-lg hover:bg-light-input-background transition-colors w-full text-center"
-        >
-          {csvFile ? t.watchlistUploaded : t.uploadWatchlist}
-        </label>
-        <input
-          id="csv-upload"
-          type="file"
-          accept=".csv"
-          onChange={(e) =>
-            setCsvFile(e.target.files ? e.target.files[0] : null)
-          }
-          className="hidden"
-        />
-        <div className="relative">
-          <div
-            ref={triggerRef}
-            onClick={() => setIsTooltipPinned(!isTooltipPinned)}
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            className="w-8 h-8 flex items-center justify-center bg-input-background rounded-full text-sm font-bold cursor-help"
+      <div className="flex flex-col md:flex-row w-full justify-evenly gap-4">
+        <div className="flex items-center justify-between gap-5 w-full">
+          <label
+            htmlFor="csv-upload"
+            className="cursor-pointer p-3 bg-input rounded-lg hover:bg-input-hover transition-colors w-full text-center"
           >
-            ?
-          </div>
-          <div
-            ref={tooltipRef}
-            className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max max-w-xs p-3 bg-light-input-background text-xs rounded-lg shadow-lg transition-opacity ${
-              isTooltipVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          >
-            <p>{t.tooltipWatchlistInfo}</p>
-            <p>{t.tooltipLetterboxdInfo}</p>
+            {csvFile ? t.watchlistUploaded : t.uploadWatchlist}
+          </label>
+          <input
+            id="csv-upload"
+            type="file"
+            accept=".csv"
+            onChange={(e) =>
+              setCsvFile(e.target.files ? e.target.files[0] : null)
+            }
+            className="hidden"
+          />
+          <div className="relative">
+            <div
+              ref={triggerRef}
+              onClick={() => setIsTooltipPinned(!isTooltipPinned)}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+              className="w-8 h-8 flex items-center justify-center bg-input rounded-full text-sm font-bold cursor-help"
+            >
+              ?
+            </div>
+            <div
+              ref={tooltipRef}
+              className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max max-w-xs p-3 bg-input-hover text-xs rounded-lg shadow-lg transition-opacity ${
+                isTooltipVisible
+                  ? "opacity-100"
+                  : "opacity-0 pointer-events-none"
+              }`}
+            >
+              <p>{t.tooltipWatchlistInfo}</p>
+              <p>{t.tooltipLetterboxdInfo}</p>
+            </div>
           </div>
         </div>
+        <Button type="submit" isLoading={isLoading}>
+          {t.searchButton}
+        </Button>
       </div>
-      <Button type="submit" isLoading={isLoading}>
-        {t.searchButton}
-      </Button>
     </form>
   );
 }

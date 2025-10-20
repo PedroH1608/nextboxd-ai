@@ -13,12 +13,12 @@ export default function MovieHeader({
   certification,
 }: MovieHeaderProps) {
   return (
-    <div>
+    <div className="pb-4">
       <div className="flex justify-between items-center gap-4">
         <div className="flex items-center gap-2">
           <h2 className="text-3xl font-bold">{title}</h2>
           {year && (
-            <span className="text-2xl font-light text-text-secondary">
+            <span className="text-2xl font-light text-foreground-secondary">
               ({year})
             </span>
           )}
@@ -31,7 +31,7 @@ export default function MovieHeader({
           />
         )}
       </div>
-      <p className="text-lg text-text-secondary italic">{tagline}</p>
+      <p className="text-lg text-foreground-secondary italic">{tagline}</p>
       <p className="mt-2 text-sm text-accent-light font-semibold">{genre}</p>
     </div>
   );

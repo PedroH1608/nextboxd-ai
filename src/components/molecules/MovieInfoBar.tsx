@@ -24,14 +24,14 @@ export default function MovieInfoBar({
 }: MovieInfoBarProps) {
   const { t } = useLanguage();
   return (
-    <div className="flex justify-evenly border-y-2 border-border-primary my-4 py-4">
+    <div className="flex justify-evenly border-y-2 border-border py-4">
       <div className="flex flex-col items-center justify-center">
         <img
           src="./images/icons/rating.svg"
           alt="Rating Icon"
           className="w-9"
         />
-        <span className="text-text-secondary font-semibold">{t.rating}</span>
+        <span className="text-foreground-secondary font-semibold">{t.rating}</span>
         <span>{rating.toFixed(1)}</span>
       </div>
       <div className="flex flex-col items-center justify-center">
@@ -40,7 +40,7 @@ export default function MovieInfoBar({
           alt="Runtime Icon"
           className="w-9"
         />
-        <span className="text-text-secondary font-semibold">{t.runtime}</span>
+        <span className="text-foreground-secondary font-semibold">{t.runtime}</span>
         <span>{formatRuntime(runtime)}</span>
       </div>
       <a
@@ -54,7 +54,7 @@ export default function MovieInfoBar({
           alt="Trailer Icon"
           className="transition-colors w-9"
         />
-        <span className="text-text-secondary font-semibold group-hover:text-text-primary transition-colors">
+        <span className="text-foreground-secondary font-semibold group-hover:text-foreground transition-colors">
           {t.trailer}
         </span>
         <span className=" group-hover:underline transition-colors">
