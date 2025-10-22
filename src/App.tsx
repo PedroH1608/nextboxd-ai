@@ -11,7 +11,7 @@ function App() {
   return (
     <main className="bg-background min-h-screen flex flex-col">
       <PageHeader />
-      <section className="bg-card p-6 rounded-xl shadow-lg m-4 md:mx-8">
+      <section className="bg-card p-6 rounded-xl shadow-lg m-4 md:mx-8 2xl:mx-90">
         <SearchForm onSubmit={handleSearchSubmit} isLoading={isLoading} />
         {error && <p className="mt-4 text-center text-error">{error}</p>}
       </section>
