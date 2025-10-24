@@ -1,11 +1,12 @@
-# WIP - NextWatch AI
+NextBoxd AI
 
-NextWatch AI is an intelligent movie suggestion application that helps you discover your next favorite film. By leveraging the power of AI, it provides personalized recommendations based on your prompts or even your own list of movies.
+NextBoxd AI is an intelligent movie suggestion application that helps you discover your next favorite film. By leveraging the power of AI, it provides personalized recommendations based on your prompts or even your own list of movies.
 
 ## Features
 
 -   **AI-Powered Suggestions**: Get movie recommendations by describing what you're in the mood for.
 -   **CSV File Upload**: Upload your movie watchlist from services like IMDb or Letterboxd (as a `.csv` file) to get suggestions from a list you already know.
+-   **Multi-language Support**: Seamlessly switch between English (en-US) and Portuguese (pt-BR).
 -   **Detailed Information**: View comprehensive details for each suggested movie, including the poster, rating, runtime, genre, overview, trailer, and more.
 -   **Modern Tech Stack**: Built with React, Node.js, and Vite for a fast and responsive user experience.
 
@@ -28,8 +29,8 @@ NextWatch AI is an intelligent movie suggestion application that helps you disco
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/nextwatch-ai.git
-    cd nextwatch-ai
+    git clone https://github.com/your-username/nextboxd-ai.git
+    cd nextboxd-ai
     ```
 
 2.  **Install dependencies:**
@@ -63,9 +64,9 @@ You need to run the backend server and the frontend development server in two se
 1.  **Start the backend server:**
     In your terminal, from the root directory of the project, run:
     ```bash
-    node server/server.js
+    npm run server:dev
     ```
-    The server will start on `http://localhost:3001` (or the port you specified in `.env`).
+    The server will start on `http://localhost:3001` (or the port you specified in `.env`) and will automatically restart on file changes.
 
 2.  **Start the frontend development server:**
     In a new terminal, from the root directory, run:

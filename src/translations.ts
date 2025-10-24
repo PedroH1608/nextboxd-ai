@@ -7,12 +7,14 @@ export const translations = {
     uploadWatchlist: "Upload your watchlist (optional)",
     watchlistUploaded: "Watchlist file uploaded",
     searchButton: "Search",
+    searchingButton: "Searching...",
+
     tooltipWatchlistInfo:
       "Your watchlist is typically a .csv file, which you can export from services like IMDb, Letterboxd, or any other platform you use to keep track of movies you want to watch.",
     tooltipLetterboxdInfo:
-      "For Letterboxd, you'll need to export your data first. On their App, go to Settings > Advanced Settings > Export Your Data. Then, upload the watchlist.csv file here.",
-
-    searchingButton: "Searching...",
+      "For Letterboxd, you'll need to export your data first. On their Website, go to Profile > Watchlist > Export Watchlist. Then, upload the watchlist.csv file here.",
+    tooltipLetterboxdInfoMobile:
+      "For Letterboxd, you'll need to export your data first. On their App, go to Profile > Profile Settings > Advanced Settings > Export Your Data. Then, extract the .zip file and upload the watchlist.csv file here.",
 
     rating: "RATING",
     runtime: "RUNTIME",
@@ -35,12 +37,14 @@ export const translations = {
     uploadWatchlist: "Envie sua lista de filmes (opcional)",
     watchlistUploaded: "Arquivo da lista de filmes enviado",
     searchButton: "Pesquisar",
+    searchingButton: "Pesquisando...",
+
     tooltipWatchlistInfo:
       "Sua lista de filmes costuma ser um arquivo .csv, que você pode exportar de serviços como IMDb, Letterboxd, ou de qualquer outra plataforma que você usa para acompanhar os filmes que deseja assistir.",
     tooltipLetterboxdInfo:
-      "No Letterboxd, você precisará exportar seus dados primeiro. No aplicativo, vá para Settings > Advanced Settings > Export Your Data. Em seguida, envie o arquivo watchlist.csv aqui.",
-
-    searchingButton: "Pesquisando...",
+      "No Letterboxd, você precisará exportar seus dados primeiro. No site, vá para Profile > Watchlist > Export Watchlist. Em seguida, envie o arquivo watchlist.csv aqui.",
+    tooltipLetterboxdInfoMobile:
+      "No Letterboxd, você precisará exportar seus dados primeiro. No aplicativo, vá para Profile > Profile Settings > Advanced Settings > Export Your Data. Em seguida, extraia o arquivo .zip e envie o arquivo watchlist.csv aqui.",
 
     rating: "AVALIAÇÃO",
     runtime: "DURAÇÃO",

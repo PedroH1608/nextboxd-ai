@@ -16,6 +16,7 @@ export function useMovieSuggestion() {
 
   const handleSearchSubmit = async (prompt: string, csvFile: File | null) => {
     setIsLoading(true);
+    setError(null);
 
     const formData = new FormData();
     formData.append("prompt", prompt);
@@ -43,6 +44,7 @@ export function useMovieSuggestion() {
 
       const data = await response.json();
       setMovieSuggestion(data.suggestion);
+      setError(null);
     } catch (error: any) {
       setError(error.message);
     } finally {

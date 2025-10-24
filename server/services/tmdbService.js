@@ -136,7 +136,7 @@ export async function getMovieCredits(movieId, locale) {
 
   const topCast = cast.slice(0, 3).map((member) => ({
     name: member.name,
-    character: member.character,
+    character: member.character || "Self",
   }));
 
   const mainDirectors = crew

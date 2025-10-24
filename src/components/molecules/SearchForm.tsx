@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
+import Tooltip from "../atoms/Tooltip";
 import Button from "../atoms/Button";
 
 interface SearchFormProps {
@@ -10,48 +11,12 @@ interface SearchFormProps {
 export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
   const [prompt, setPrompt] = useState("");
   const [csvFile, setCsvFile] = useState<File | null>(null);
-  const [isTooltipPinned, setIsTooltipPinned] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
-  const tooltipRef = useRef<HTMLDivElement>(null);
-  const triggerRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(prompt, csvFile);
   };
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 1024px)");
-    const handleResize = (e: MediaQueryListEvent) =>
-      setIsLargeScreen(e.matches);
-
-    setIsLargeScreen(mediaQuery.matches);
-    mediaQuery.addEventListener("change", handleResize);
-
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }, []);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        tooltipRef.current &&
-        !tooltipRef.current.contains(event.target as Node) &&
-        triggerRef.current &&
-        !triggerRef.current.contains(event.target as Node)
-      ) {
-        setIsTooltipPinned(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [tooltipRef, triggerRef]);
-
-  const isTooltipVisible = isTooltipPinned || (isHovering && isLargeScreen);
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -79,28 +44,25 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
             }
             className="hidden"
           />
-          <div className="relative">
-            <div
-              ref={triggerRef}
-              onClick={() => setIsTooltipPinned(!isTooltipPinned)}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-              className="w-8 h-8 flex items-center justify-center bg-input rounded-full text-sm font-bold cursor-help"
-            >
-              ?
-            </div>
-            <div
-              ref={tooltipRef}
-              className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max max-w-xs p-3 bg-input-hover text-xs rounded-lg shadow-lg transition-opacity ${
-                isTooltipVisible
-                  ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
-            >
-              <p>{t.tooltipWatchlistInfo}</p>
-              <p>{t.tooltipLetterboxdInfo}</p>
-            </div>
-          </div>
+          <Tooltip
+            trigger={
+              <div className="w-8 h-8 flex items-center justify-center bg-input rounded-full text-sm font-bold cursor-help">
+                ?
+              </div>
+            }
+            desktopContent={
+              <>
+                <p>{t.tooltipWatchlistInfo}</p>
+                <p className="mt-2">{t.tooltipLetterboxdInfo}</p>
+              </>
+            }
+            mobileContent={
+              <>
+                <p>{t.tooltipWatchlistInfo}</p>
+                <p className="mt-2">{t.tooltipLetterboxdInfoMobile}</p>
+              </>
+            }
+          />
         </div>
         <Button type="submit" isLoading={isLoading}>
           {t.searchButton}

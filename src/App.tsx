@@ -1,5 +1,6 @@
 import { useMovieSuggestion } from "./hooks/useMovieSuggestion";
 import PageHeader from "./components/organisms/PageHeader";
+import AnimatedTagline from "./components/atoms/AnimatedTagline";
 import SearchForm from "./components/molecules/SearchForm";
 import MovieSuggestionCard from "./components/organisms/MovieSuggestionCard";
 import PageFooter from "./components/organisms/PageFotter";
@@ -11,7 +12,9 @@ function App() {
   return (
     <main className="bg-background min-h-screen flex flex-col">
       <PageHeader />
-      <section className="bg-card p-6 rounded-xl shadow-lg m-4 md:mx-8 2xl:mx-90">
+      
+      <section className="bg-card p-6 rounded-xl shadow-lg m-4 md:mx-8 xl:mx-30 2xl:mx-90">
+        <AnimatedTagline />
         <SearchForm onSubmit={handleSearchSubmit} isLoading={isLoading} />
         {error && <p className="mt-4 text-center text-error">{error}</p>}
       </section>
