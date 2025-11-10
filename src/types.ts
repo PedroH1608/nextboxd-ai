@@ -15,4 +15,8 @@ export interface MovieSuggestion {
   producers: string;
   writers: string;
   sound: string;
+  providers: {
+    streaming: { logo_path: string; provider_name: string }[];
+    link: string | null;
+  };
 }

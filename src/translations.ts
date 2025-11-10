@@ -28,6 +28,12 @@ export const translations = {
     mainProducers: "Main Producers:",
     mainWriters: "Main Writers:",
     soundLead: "Sound Lead:",
+
+    whereToWatch: "Where to Watch",
+    stream: "Stream",
+    rent: "Rent",
+    buy: "Buy",
+    viewOnTmdb: "View on TMDB",
   },
   "pt-BR": {
     discover: "Descubra seu próximo filme favorito.",
@@ -58,5 +64,11 @@ export const translations = {
     mainProducers: "Produtores Principais:",
     mainWriters: "Roteiristas Principais:",
     soundLead: "Líder de Som:",
+
+    whereToWatch: "Onde Assistir",
+    stream: "Streaming",
+    rent: "Alugar",
+    buy: "Comprar",
+    viewOnTmdb: "Ver no TMDB",
   },
 };

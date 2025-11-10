@@ -6,17 +6,25 @@ import {
   getMovieTrailer,
   getMovieCredits,
   findMovieId,
+  getMovieProviders,
 } from "./tmdbService.js";
 
 async function getFullMovieDetails(movieId, locale) {
-  const [posterInfo, details, releaseInfo, trailerInfo, creditsInfo] =
-    await Promise.all([
-      getMoviePoster(movieId, locale),
-      getMovieDetails(movieId, locale),
-      getMovieRelease(movieId, locale),
-      getMovieTrailer(movieId),
-      getMovieCredits(movieId),
-    ]);
+  const [
+    posterInfo,
+    details,
+    releaseInfo,
+    trailerInfo,
+    creditsInfo,
+    providers,
+  ] = await Promise.all([
+    getMoviePoster(movieId, locale),
+    getMovieDetails(movieId, locale),
+    getMovieRelease(movieId, locale),
+    getMovieTrailer(movieId),
+    getMovieCredits(movieId),
+    getMovieProviders(movieId, locale),
+  ]);
 
   return {
     ...details,
@@ -31,6 +39,7 @@ async function getFullMovieDetails(movieId, locale) {
     producers: creditsInfo.producers.join(", "),
     writers: creditsInfo.writers.join(", "),
     sound: creditsInfo.sound,
+    providers,
   };
 }
 

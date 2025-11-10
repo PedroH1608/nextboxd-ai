@@ -3,6 +3,7 @@ import MovieHeader from "../molecules/MovieSuggestion";
 import MovieInfoBar from "../molecules/MovieInfoBar";
 import MovieOverview from "../molecules/MovieOverview";
 import MovieCredits from "../molecules/MovieCredits";
+import MovieProviders from "../molecules/MovieProviders";
 
 interface MovieSuggestionCardProps {
   suggestion: MovieSuggestion;
@@ -42,6 +43,7 @@ export default function MovieSuggestionCard({
           writers={suggestion.writers}
           sound={suggestion.sound}
         />
+        <MovieProviders providers={suggestion.providers} />
       </div>
     </article>
   );

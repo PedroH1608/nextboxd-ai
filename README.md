@@ -7,7 +7,7 @@ NextBoxd AI is an intelligent movie suggestion application that helps you discov
 -   **AI-Powered Suggestions**: Get movie recommendations by describing what you're in the mood for.
 -   **CSV File Upload**: Upload your movie watchlist from services like IMDb or Letterboxd (as a `.csv` file) to get suggestions from a list you already know.
 -   **Multi-language Support**: Seamlessly switch between English (en-US) and Portuguese (pt-BR).
--   **Detailed Information**: View comprehensive details for each suggested movie, including the poster, rating, runtime, genre, overview, trailer, and more.
+-   **Detailed Information**: View comprehensive details for each suggested movie, including the poster, rating, runtime, genre, overview, trailer, cast, and where to watch.
 -   **Modern Tech Stack**: Built with React, Node.js, and Vite for a fast and responsive user experience.
 
 ## Technologies Used
@@ -82,5 +82,5 @@ Now you can open your browser and navigate to the frontend URL to use the applic
 1.  The user enters a prompt (e.g., "a sci-fi movie in a galaxy far, far away...") and optionally uploads a CSV file.
 2.  The React frontend sends this data to the Express.js backend.
 3.  The backend forwards the prompt and CSV content to the OpenRouter API, which returns the title and year of a single movie.
-4.  The backend then uses the TMDB API to find the movie by its title and year, gathering detailed information like its poster, rating, cast, and trailer.
+4.  The backend then uses the TMDB API to find the movie by its title and year, gathering detailed information like its poster, rating, cast, trailer, and streaming providers.
 5.  This complete movie suggestion is sent back to the frontend and displayed to the user.

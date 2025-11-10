@@ -162,3 +162,28 @@ export async function getMovieCredits(movieId, locale) {
     sound: soundLead ? soundLead.name : null,
   };
 }
+
+export async function getMovieProviders(movieId, locale) {
+  const countryCode = locale === "en-US" ? "US" : "BR";
+
+  const response = await tmdbApi.get(`/movie/${movieId}/watch/providers`);
+  const results = response.data.results;
+  const countryProviders = results[countryCode];
+
+  if (!countryProviders) {
+    return { streaming: [], link: null };
+  }
+
+  const mapProviders = (providers) =>
+    providers
+      ? providers.map((p) => ({
+          logo_path: p.logo_path,
+          provider_name: p.provider_name,
+        }))
+      : [];
+
+  return {
+    streaming: mapProviders(countryProviders.flatrate),
+    link: countryProviders.link,
+  };
+}
